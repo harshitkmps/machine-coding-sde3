@@ -1,0 +1,63 @@
+VehicleType{
+    Bike, Truck, Car
+}
+
+ParkingLot{
+    Id,
+    Floors<>
+
+    addFloors(n)
+}
+
+Floor{
+    Id
+    Slots<>
+    boolean isFull
+    addSlots(n)
+}
+
+ParkingSlotStatus{
+    occupied, unoccupied
+}
+
+Slot{
+    Id,
+    VehicleType,
+    ParkingSlotStatus
+    Ticket
+}
+
+Ticket{
+    id
+    Vehicle
+}
+
+Vehicle{
+    regNo
+    color
+    type
+}
+
+Database{
+    map<parkinglotId, parkingLot>
+}
+
+ParkingLotAdminService{
+    createParkingLot(numberOfFloors, noOfSlotPerFloor){}
+}
+
+ParkingManagementService{
+    showAvailableSlots(floor){}
+
+    showAvailableSlotsCount(floor){}
+
+    Ticket parkVehicle(ParkingLot, Vehicle){}
+
+    unparkVehicle(ticket){}
+
+    showOccupiedSlots(floor, vehicleType)
+}
+
+DriverClass{
+    
+}
